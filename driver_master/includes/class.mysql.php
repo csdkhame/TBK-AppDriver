@@ -15,7 +15,7 @@ if (eregi("class.mysql.php",$_SERVER['PHP_SELF'])) {
 
 class DB{
 	//??
-	var $host_th = "localhost" ;
+	var $host_th = "192.168.0.108" ;
 	 //var $host_cn = "192.168.0.130" ;
   /// var $host_cn = "localhost" ;
 	 //var $host_cn = "223.223.218.85" ;
