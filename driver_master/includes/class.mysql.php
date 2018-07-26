@@ -18,7 +18,8 @@ class DB{
 	var $host_th = "localhost" ;
 	 //var $host_cn = "192.168.0.130" ;
   /// var $host_cn = "localhost" ;
-	 var $host_cn = "223.223.218.85" ;
+	 //var $host_cn = "223.223.218.85" ;
+	var $host_cn = "localhost" ;
 	var $database ;
 	var $connect_db ;
 	var $selectdb ;
