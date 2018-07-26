@@ -1132,12 +1132,35 @@ $_GET[checkin]='finishpoint';
 
 $(".btn-modal-ok").click(function(){  
 
+  if($('#data_income_other_check').val()>0){
+  	var url_ic_dv = "income_other/income_other_php.php?action=save_list";
+  	var dv = $('#dv_balance').val();
+  	var com = $('#com_balance').val();
+  	var type = $('#type_income_other').val();
+  	var all = $('#balance_input').val()
+  	var data = {
+		type : type,
+		balance : all,
+		driver_balance : dv,
+		company_balance : com,
+		posted : "<?=$arr[web_driver][username];?>",
+		transfer_id : "<?=$arr[project][id];?>"
+	  };
+	  console.log(data);
+	  
+	  $.post(url_ic_dv,data,function(data){
+	  		console.log(data);
+	  });
+//	  return;
+  }
+  
+
  $("#send_data_checkin_wait" ).html(load_main_mod_checkin_wait);  
   var url_checkin = "go.php?name=action&file=action&daytype=<?=$_GET[daytype]?>&day=<?=$_GET[day]?>"; 
  
  $.post(url_checkin,$('#form_checkin').serialize(),function(response){
    $('#send_data_checkin').html(response);
-   
+   $('#tr_box_income_other').show();
    
  // $("#btn_upload_photo_<?=$arr[project][id];?>" ).click(); 
 	
@@ -1186,23 +1209,163 @@ $(".btn-modal-ok").click(function(){
 		<center><div style="padding:2px; font-size:20px; margin-top:10px; color:#999999 ">ว่ามาถึงสถานที่ส่งแขกแล้ว</div>
         
         
+        <div class="div-all-lost">
         <div class="topictransfer"><center>ถ่ายภาพสถานที่ส่งแขก</div>
-		  
 	  <?  include ("mod/load/show/step/photo.php");?>
-      
-      <div class="topictransfer"><center>ถ่ายภาพภายในรถ</div>
-            
-    <?  include ("mod/load/show/step/photo_complete.php");?>
-    
+      	</div>
+      	
+      	<div class="div-all-lost">
+      <div class="topictransfer"><center>ถ่ายภาพภายในรถ</div>    
+    	<?  include ("mod/load/show/step/photo_complete.php");?>
+   	 </div>
     <?  include ("mod/load/show/step/lost.php");?>
-    
-    
-    
-   
     
     
      <?  include ("mod/load/show/step/income_check.php");?>
       
+      
+<table width="100%" border="0" cellspacing="2" cellpadding="2"  class="div-all-lost">
+  <tbody>
+    <tr>
+      <td colspan="2"><h4> <center><b> รายได้อื่นๆ</b></center></h4>
+      <input type="hidden" value="0" id="data_income_other_check" name="data_income_other_check" />
+      </td>
+      </tr>
+    <tr>
+      <td><table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tbody>
+          <tr>
+            <td width="30"><input name="check_ic_other"  type="radio" id="check_income_other_1"  value="0" checked="checked"   data-off-text="ชำรุด" data-on-text="สมบูรณ์"></td>
+            <td class="font_18">ไม่มี</td>
+          </tr>
+        </tbody>
+      </table></td>
+      <td width="50%"><table width="100%" border="0" cellspacing="2" cellpadding="2">
+        <tbody>
+          <tr>
+            <td width="30"><input name="check_ic_other"  type="radio" id="check_income_other_2"  value="1"   data-off-text="ชำรุด" data-on-text="สมบูรณ์"></td>
+            <td  class="font_18">มี</td>
+          </tr>
+        </tbody>
+      </table></td>
+    </tr>
+    <tr id="tr_detail_income_other" style="display:none">
+      <td colspan="2">
+      <table width="100%">
+      	<tr>
+      		<td>
+      			<h4> <center><b>กรอกข้อมูลของรายได้</b></center></h4>   
+      <select class="form-control" name="type_income_other" id="type_income_other">
+      		<option value="0">- กรุณาเลือกประเภท -</option>
+      		<?php 
+      		 $db->connectdb(DB_NAME_DATA,DB_USERNAME,DB_PASSWORD);
+		     $res[type] = $db->select_query("select * from income_other_type  where id>0");
+			 while($arr[type] = $db->fetch($res[type])){ ?>
+			 	<option value="<?=$arr[type][id];?>" role="xx" dv-percent="<?=$arr[type][driver_percent];?>" com-percent="<?=$arr[type][company_percent];?>" ><?=$arr[type][topic];?></option>
+			 <? }
+      		?>
+      		
+      </select>
+      		</td>
+      	</tr>
+      	<tr class="tr-income-other" style="display: none;">
+      		<td><p>คนขับ <span id="txt_dv_percent">0</span> % บริษัท <span id="txt_com_percent">0</span> %</p></td>
+      	</tr>
+      	<tr class="tr-income-other" style="display: none;">
+      		<td><input type="number" id="balance_input" name="balance_input" class="form-control" placeholder="กรุณากรอกรายได้" /></td>
+      	</tr>
+      	<tr class="tr-income-other" style="display: none;">
+      		<td><h3>รายได้ของคุณ : <span id="txt_dv_balance" >0</span>&nbsp;บาท</h3>
+      		<input type="hidden" id="dv_balance" />
+      		</td>
+      	</tr>
+      	<tr  style="display: none;">
+      		<td><h3>รายได้บริษัท : <span id="txt_com_balance" >0</span>&nbsp;บาท</h3>
+      		<input type="hidden" id="com_balance" />
+      		</td>
+      	</tr>
+      </table>
+   
+      
+      </td>
+      </tr>
+ 	
+  </tbody>
+  <script>
+  	/**
+	  * 
+	  * @var Nut
+	  * 
+	  */
+	 /* {
+		type : type_income_other,
+		balance : balance_input,
+		driver_balance : $('#txt_dv_balance').text(),
+		company_balance : $('#txt_com_balance').text()
+	  }*/
+	  $('#balance_input').keyup(function(){
+	  		var input_val = $(this).val();
+	  		calDv(input_val)
+	  		calCom(input_val)
+	  });
+	  function calDv(input_val){
+	  	if(input_val!="" && input_val!=0){
+				var dv_percent = $('#txt_dv_percent').text();
+	  			var balance = parseInt(input_val) * parseInt(dv_percent)/100;
+	  			console.log(balance);
+	  			$('#txt_dv_balance').text(balance);
+	  			$('#dv_balance').val(balance);
+			}else{
+				$('#txt_dv_balance').text(0);
+				$('#dv_balance').val(0);
+			}
+	  }
+	  function calCom(input_val){
+	  	if(input_val!="" && input_val!=0){
+				var com_percent = $('#txt_com_percent').text();
+	  			var balance = parseInt(input_val) * parseInt(com_percent)/100;
+	  			console.log(balance);
+	  			$('#txt_com_balance').text(balance);
+	  			$('#com_balance').val(balance);
+			}else{
+				$('#txt_com_balance').text(0);
+				$('#com_balance').val(0);
+			}
+	  }
+	  $('#type_income_other').change(function(){
+	  		var id_type = $(this).val();
+	  		if(id_type==""){
+				$('.tr-income-other').hide();
+				return;
+			}
+			$('.tr-income-other').show();
+	  		var dv = $('option:selected', this).attr("dv-percent");
+	  		var com = $('option:selected', this).attr("com-percent");
+	  		var xx = $('option:selected', this).attr("role");
+	  		console.log(id_type+" | "+dv+" | "+com+" | "+xx)
+	  		$('#txt_dv_percent').text(dv);
+	  		$('#txt_com_percent').text(com);
+	  });
+	  
+		$('#check_income_other_1').on('ifChecked', function(event){
+  $('#tr_detail_income_other').hide();
+ 
+  $('#data_income_other_check').val(0);
+ 
+  
+});
+
+
+		$('#check_income_other_2').on('ifChecked', function(event){
+  $('#tr_detail_income_other').show();
+ 
+  $('#data_income_other_check').val(1);
+ 
+  
+});
+  </script>
+</table>
+
       
          <div style="padding-bottom:5px; ">
    <div style=" display:none ">

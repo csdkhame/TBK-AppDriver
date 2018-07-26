@@ -333,6 +333,100 @@ $('#checkstep_4_<?=$arr[project][id];?>').addClass("checkinstep_active");
     
     </td>
   </tr>
+
+
+<?php 
+
+	
+$db->connectdb(DB_NAME_DATA,DB_USERNAME,DB_PASSWORD);
+$res[type] = $db->select_query("select * from income_other_list  where transfer_id = '".$arr[project][id]."' ");
+$arr[type] = $db->fetch($res[type]);
+
+$res[cat] = $db->select_query("select * from income_other_type  where id = '".$arr[type][type]."' ");
+$arr[cat] = $db->fetch($res[cat]);
+if($arr[project][driver_complete]==1){
+	$none_tr_ic_other = "";
+}else{
+	$none_tr_ic_other = "display: none;";
+}
+?>
+<tr style="<?=$none_tr_ic_other;?>" id="tr_box_income_other">
+   <td colspan="2">
+      <div class="div-all-checkin-step">
+         <table width="100%" border="0" cellspacing="2" cellpadding="2" style="border-bottom: solid 0px #999999; margin-bottom:0px; ">
+            <tbody>
+               <tr>
+                  <td width="45">
+                     <div class="checkinstep checkinstep_active" id="checkstep_4_264228">
+                        <center>
+                           <b>5</b>
+                        </center>
+                     </div>
+                     <div style="position:absolute; margin-top:-30px; margin-left: -10px;"><img src="images/yes.png" align="absmiddle" id="iconchk_s4_264228"></div>
+                  </td>
+                  <td valign="middle">
+                     <button class="btnstatus-checkin-no" id="btn_checkcar264228" disabled="disabled">รายได้อื่นๆ</button>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+         <div >
+           
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left: 0px; ">
+               <tbody>
+                  <tr>
+                     <td>
+                        <div style="cursor:pointer;margin-left: 6px; ">
+                           <a>
+                              <table width="100%">
+                                 <tbody>
+                                    <tr>
+                                       <td width="20" valign="top"><i style=" font-size: 22px; color: #666666" class="fa fa-clock-o"></i> </td>
+                                       <td>
+                                          <div align="left" style="font-size:16px; ">
+                                             <b>วันที่ <?=date('Y:m:d',$arr[type][post_date]);?></b><b> เวลา <?=date('H:i:s',$arr[type][post_date]);?></b>                         
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td width="20" valign="top"><i style=" font-size: 22px; color: #666666" class="fa fa-star"></i> </td>
+                                       <td>
+                                          <div align="left" style="font-size:16px; ">
+                                             <b>ประเภท : <?=$arr[cat][topic];?></b>                         
+                                          </div>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </a>
+                        </div>
+                     </td>
+                     <td width="30" style="display:none"><i class="fa  fa-camera" style="color:#999999; font-size:22px"></i></td>
+                  </tr>
+               </tbody>
+            </table>
+         
+         </div>
+         <div>
+
+            <table width="100%" border="0" cellspacing="2" cellpadding="2" style="margin-left:-15px;">
+               <tbody>
+                  <tr>
+                     <td width="33%" align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> เปอร์เซ็นคนขับ : <?=$arr[cat][driver_percent];?> % </a>   
+                     </td>
+                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> ทั้งหมด : <?=$arr[type][balance];?> บาท </a>   
+                     </td>
+                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> รายได้ : <?=$arr[type][driver_balance];?> บาท </a>   
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <!--ประเภท : <?=$arr[cat][topic];?>  -->
+         </div>
+      </div>
+   </td>
+</tr>
+
 </table>
 
 <script>
