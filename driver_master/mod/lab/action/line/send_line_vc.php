@@ -1,0 +1,1 @@
+<iframe width="100%"  height="100%"  frameborder="0" style="border:0" src="https://goldenbeachgroup.com/app/crontab/line/send_new.php?driver=<?=$driver?>&drivernew=<?=$drivernew?>&vc=<?=$vc?>&worktype=<?=$worktype?>" allowfullscreen></iframe>

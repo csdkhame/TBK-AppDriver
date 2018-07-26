@@ -1,0 +1,37 @@
+## 
+
+RewriteEngine On
+
+#
+#
+RewriteBase /app/driver_master
+
+#
+# Rewrite Rules
+RewriteRule ^([a-zA-Z0-9]+).html    index.php?name=$1  [L]
+RewriteRule ^([a-zA-Z0-9]+)cms.html    show.php?name=$1  [L]
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)_id(.*).html(.*)  index.php?name=$1&file=$2&id=$3 [L]
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)_driver(.*)_day(.*).html(.*)  go.php?name=$1&file=$2&driver=$3&day=$4 [L]
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)_id(.*)_program(.*).html(.*)  index.php?name=$1&file=$2&id=$3&program=$4 [L]
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)_id(.*)_action(.*).html(.*)  index.php?name=$1&file=$2&id=$3&action=$4 [L]
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)_no(.*)_order(.*)_code(.*).html(.*)  printmail.php?name=$1&file=$2&no=$3&order=$4&code=$5 [L]
+
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)action_(.*).html(.*)  index.php?name=$1&file=$2&action=$3 [L]
+
+
+RewriteRule ^([a-zA-Z0-9_]+)_([a-zA-Z0-9_]+)(.*).html(.*)  index.php?name=$1&file=$2 [L]
+RewriteRule ^([a-zA-Z0-9_]+)cat-(.*).html  index.php?name=$1&category=$2 [L]
+RewriteRule ^([a-zA-Z0-9_]+)cat([a-zA-Z0-9_]+)-page(.*).html  index.php?name=$1&category=$2&page=$3 [L]
+
+
+php_value session.cache_expire 300000000
