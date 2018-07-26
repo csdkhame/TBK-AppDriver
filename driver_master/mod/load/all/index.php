@@ -96,9 +96,10 @@ $res[gg_map_cn] = $db->select_query("SELECT id,topic,province,amphur FROM ".TB_t
 */
 
 
- 
+
 $db->connectdb(DB_NAME,DB_USERNAME,DB_PASSWORD);
 $res[timeline] = $db->select_query("SELECT * FROM date_loop  where  dayall >= '".$_GET[day]."' order by  id  asc  limit 3");
+
 while($arr[timeline] = $db->fetch($res[timeline])){
 ///echo $arr[timeline][dayall];
 
