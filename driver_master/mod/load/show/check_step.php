@@ -423,7 +423,7 @@ if($arr[project][driver_complete]==1){
             </table>
          
          </div>
-         <div>
+         <div style="padding: 5px 10px;">
 
           <!--<table width="100%" border="0" cellspacing="2" cellpadding="2" style="margin-left:-15px;">
                <tbody>
