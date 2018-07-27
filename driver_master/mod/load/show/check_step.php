@@ -392,7 +392,7 @@ if($arr[project][driver_complete]==1){
                                        <td width="20" valign="top"><i style=" font-size: 22px; color: #666666" class="fa fa-star"></i> </td>
                                        <td>
                                           <div align="left" style="font-size:16px; ">
-                                             <b>ประเภท : <?=$arr[cat][topic];?></b>                         
+                                             <b>ประเภท : <span id="txt_show_type_name"><?=$arr[cat][topic];?></span></b>                         
                                           </div>
                                        </td>
                                     </tr>
@@ -412,11 +412,11 @@ if($arr[project][driver_complete]==1){
             <table width="100%" border="0" cellspacing="2" cellpadding="2" style="margin-left:-15px;">
                <tbody>
                   <tr>
-                     <td width="33%" align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> เปอร์เซ็นคนขับ : <?=$arr[cat][driver_percent];?> % </a>   
+                     <td width="33%" align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> เปอร์เซ็นคนขับ : <span id="txt_show_dv_percent"><?=$arr[cat][driver_percent];?></span> % </a>   
                      </td>
-                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> ทั้งหมด : <?=$arr[type][balance];?> บาท </a>   
+                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> ทั้งหมด : <span id="txt_show_balance"><?=$arr[type][balance];?></span> บาท </a>   
                      </td>
-                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> รายได้ : <?=$arr[type][driver_balance];?> บาท </a>   
+                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> รายได้ : <span id="txt_show_dv_balance"><?=$arr[type][driver_balance];?></span> บาท </a>   
                      </td>
                   </tr>
                </tbody>

@@ -1150,7 +1150,14 @@ $(".btn-modal-ok").click(function(){
 	  
 	  $.post(url_ic_dv,data,function(data){
 	  		console.log(data);
+	  		var dv_percent = $('#txt_dv_percent').text();
+	  		$('#txt_show_dv_percent').text(dv_percent);
+	  		$('#txt_show_dv_balance').text(dv);
+	  		$('#txt_show_balance').text(all);
+	  		$('#txt_show_type_name').text($("#type_income_other option:selected").text());
+	  		$('#tr_box_income_other').show();
 	  });
+	  
 //	  return;
   }
   
@@ -1160,7 +1167,7 @@ $(".btn-modal-ok").click(function(){
  
  $.post(url_checkin,$('#form_checkin').serialize(),function(response){
    $('#send_data_checkin').html(response);
-   $('#tr_box_income_other').show();
+   
    
  // $("#btn_upload_photo_<?=$arr[project][id];?>" ).click(); 
 	

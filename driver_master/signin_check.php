@@ -52,7 +52,7 @@ if($arr[admin][id]){
 <script>
 
 
-window.location.href = "index.php?newlogin=<?=date('Y-m-d==H:i:s');?>";
+window.location.href = "index.php?newlogin=2018-07-26==11:51:00";
  
  ///alert('<?=$_SESSION['data_user_driver']?>');
   //$("#load_form").hide();
