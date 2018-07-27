@@ -74,10 +74,11 @@ while ($arr[place] = $db->fetch($res[place])) {
                                     <tbody><tr>
                                             <td width="50%">
                                             <?php
+                                            
                                             if($data[map] != ''){
 												
 												
-											 include "mod/place/place/popup/map_pickup.php";
+											 
 												
 												
                                             ?>
@@ -94,17 +95,17 @@ while ($arr[place] = $db->fetch($res[place])) {
 								  $arr[place][name_pickup_place_area] =$arr[province][name];
 								   $arr[place][name_pickup_place_province] =$arr[amphur][name];
 								 
-								 
+								 include "mod/place/place/popup/map_pickup.php";
 								 
 								 ?>
                                             
-                                             <script>
+                                            <!-- <script>
  
 $("#icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>").click(function(){   
 
+ console.log("alert_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>");
  
- 
-  $("#alert_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>" ).toggle();
+  $("#alert_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>" ).show();
  
   
  	});
@@ -122,13 +123,13 @@ $("#icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>").c
  
   });
 
-</script>
+</script>-->
                                             
 
                                             
                                             
                                                 <div class="div-all-check-place">                           
-                                                    <a id="icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>">
+                                                    <a id="icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>" onclick="openMaps('<? echo $arr[place][id];?>')">
                                                         <img src="images/icon/map/map.png" align="bottom" width="30"><b>&nbsp;แผนที่นำทาง </b></a><b>
                                                     </b>
                                                     </div>

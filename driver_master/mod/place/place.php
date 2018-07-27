@@ -163,7 +163,7 @@ while ($arr[place] = $db->fetch($res[place])) {
                                             
                                             
                                                 <div class="div-all-check-place" >                           
-                                                    <a title="แสดงแผนที่นำทาง"  id="icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>">
+                                                    <a title="แสดงแผนที่นำทาง"  id="icon_timeline_show_map_pickup_<? echo $arr[place][id];?>_<?=$_GET[set]?>" >
                                                         <img src="images/icon/map/map.png" align="bottom" width="30"><b>&nbsp;แผนที่นำทาง </b></a><b>
                                                     </b>
                                                     </div>
@@ -273,8 +273,16 @@ url=url+'&lng='+document.getElementById('check_data_status_gps_lng_old').value;
 		
 		
 
+	console.log('<?=$_GET[id];?>');
 	
+	function openMaps(id){
+		console.log("alert_timeline_show_map_pickup_"+id+"_<?=$_GET[set]?>");
+		$("#alert_timeline_show_map_pickup_"+id+"_<?=$_GET[set]?>" ).show();
+	}
 	
-	
+	function closeMaps(id){
+		console.log("alert_timeline_show_map_pickup_"+id+"_<?=$_GET[set]?>");
+		$("#alert_timeline_show_map_pickup_"+id+"_<?=$_GET[set]?>" ).hide();
+	}
 	
 </script> 	 

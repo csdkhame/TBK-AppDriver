@@ -339,6 +339,9 @@ $('#checkstep_4_<?=$arr[project][id];?>').addClass("checkinstep_active");
 
 	
 $db->connectdb(DB_NAME_DATA,DB_USERNAME,DB_PASSWORD);
+
+$num_check_ic = $db->num_rows("income_other_list","id","transfer_id = '".$arr[project][id]."' ");
+
 $res[type] = $db->select_query("select * from income_other_list  where transfer_id = '".$arr[project][id]."' ");
 $arr[type] = $db->fetch($res[type]);
 
@@ -349,10 +352,21 @@ if($arr[project][driver_complete]==1){
 }else{
 	$none_tr_ic_other = "display: none;";
 }
+ if($num_check_ic>0){
+ 	$none_detail = "";
+ }else{
+ 	$none_detail = "display: none;";
+ }
+ if($num_check_ic>0){
+ 	$none_detail_box = "display: none;";
+ }else{
+ 	$none_detail_box = "";
+ }
 ?>
 <tr style="<?=$none_tr_ic_other;?>" id="tr_box_income_other">
    <td colspan="2">
       <div class="div-all-checkin-step">
+      	
          <table width="100%" border="0" cellspacing="2" cellpadding="2" style="border-bottom: solid 0px #999999; margin-bottom:0px; ">
             <tbody>
                <tr>
@@ -370,8 +384,9 @@ if($arr[project][driver_complete]==1){
                </tr>
             </tbody>
          </table>
-         <div >
-           
+		 
+		 <div id="box_detail_ic_other_yes" style="<?=$none_detail;?>">
+         <div >      
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-left: 0px; ">
                <tbody>
                   <tr>
@@ -384,7 +399,8 @@ if($arr[project][driver_complete]==1){
                                        <td width="20" valign="top"><i style=" font-size: 22px; color: #666666" class="fa fa-clock-o"></i> </td>
                                        <td>
                                           <div align="left" style="font-size:16px; ">
-                                             <b>วันที่ <?=date('Y:m:d',$arr[type][post_date]);?></b><b> เวลา <?=date('H:i:s',$arr[type][post_date]);?></b>                         
+                                             <b>วันที่ <span id="date_income_other_show"><?=date('Y:m:d',$arr[type][post_date]);?></span></b>
+                                             <b> เวลา <span id="date_income_other_show"><?=date('H:i:s',$arr[type][post_date]);?></span></b>                         
                                           </div>
                                        </td>
                                     </tr>
@@ -409,20 +425,61 @@ if($arr[project][driver_complete]==1){
          </div>
          <div>
 
-            <table width="100%" border="0" cellspacing="2" cellpadding="2" style="margin-left:-15px;">
+          <!--<table width="100%" border="0" cellspacing="2" cellpadding="2" style="margin-left:-15px;">
                <tbody>
                   <tr>
-                     <td width="33%" align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> เปอร์เซ็นคนขับ : <span id="txt_show_dv_percent"><?=$arr[cat][driver_percent];?></span> % </a>   
+                     <td width="100%" align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:center; "> เปอร์เซ็นคนขับ : <span id="txt_show_dv_percent"><?=$arr[cat][driver_percent];?></span> % </a>   
                      </td>
-                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> ทั้งหมด : <span id="txt_show_balance"><?=$arr[type][balance];?></span> บาท </a>   
-                     </td>
-                     <td width="33%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:left "> รายได้ : <span id="txt_show_dv_balance"><?=$arr[type][driver_balance];?></span> บาท </a>   
+
+                  </tr>
+                  <tr>
+                     <td width="100%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:center "> ทั้งหมด : <span id="txt_show_balance"><?=$arr[type][balance];?></span> บาท </a>   
                      </td>
                   </tr>
+                  <tr>
+                  	<td width="100%"  align="center"><a class="btn btn-app" style="padding: 7px 20px; height:35px; width:100%;font-size:16px;border-radius: 15px;background-color:#FFFFFF; text-align:center "> รายได้ : <span id="txt_show_dv_balance"><?=$arr[type][driver_balance];?></span> บาท </a>   
+                     </td>
+                  </tr>
+                    
                </tbody>
+            </table>-->
+            
+            <table border="0" cellspacing="2" cellpadding="2" width="100%">
+            	<tr>
+            		<th width="80%">รายการ</th>
+            		<th>จำนวน</th>
+            	</tr>
+            	<tr>
+            		<td><span style="font-size:16px;">เปอร์เซ็นคนขับ</span></td>
+            		<td align="right"><span id="txt_show_dv_percent" style="font-size:16px;"><?=$arr[cat][driver_percent];?></span> </td>
+            		<td>%</td>
+            	</tr>
+            	<tr>
+            		<td> <span style="font-size:16px;">ทั้งหมด</span> </td>
+            		<td align="right"><span id="txt_show_balance" style="font-size:16px;"><?=$arr[type][balance];?></span></td>
+            		<td>บาท</td>
+            	</tr>
+            	<tr>
+            		<td><span style="font-size:16px;">รายได้</span></td>
+            		<td align="right"><span id="txt_show_dv_balance" style="font-size:16px;"><?=$arr[type][driver_balance];?></span> </td>
+            		<td>บาท</td>
+            	</tr>
             </table>
             <!--ประเภท : <?=$arr[cat][topic];?>  -->
          </div>
+		 </div>
+
+		 <div style="margin-top: 8px;<?=$none_detail_box;?>" id="box_detail_ic_other_no">
+		 <table width="100%" border="0" cellspacing="2" cellpadding="2" class="div-all-lost">
+		  <tbody>
+		    <tr>
+		      <td>     
+		      <i class="fa fa fa-check-circle" style="font-size: 24px; color:#17B3B2"></i><span style="font-size: 18px; "><b> ไม่มีรายได้อื่นๆ 
+		      </b></span></td>
+		    </tr>
+		  </tbody>
+		</table>
+		</div>
       </div>
    </td>
 </tr>

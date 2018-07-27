@@ -1155,7 +1155,10 @@ $(".btn-modal-ok").click(function(){
 	  		$('#txt_show_dv_balance').text(dv);
 	  		$('#txt_show_balance').text(all);
 	  		$('#txt_show_type_name').text($("#type_income_other option:selected").text());
-	  		$('#tr_box_income_other').show();
+	  		$('#box_detail_ic_other_yes').show();
+	  		$('#box_detail_ic_other_no').hide();
+	  		$('#date_income_other_show').text("<?=date('Y-m-d',time());?>");
+	  		$('#time_income_other_show').text("<?=date('H:i:s',time());?>");
 	  });
 	  
 //	  return;
@@ -1168,7 +1171,7 @@ $(".btn-modal-ok").click(function(){
  $.post(url_checkin,$('#form_checkin').serialize(),function(response){
    $('#send_data_checkin').html(response);
    
-   
+   $('#tr_box_income_other').show();
  // $("#btn_upload_photo_<?=$arr[project][id];?>" ).click(); 
 	
 	
