@@ -75,6 +75,7 @@ while ($arr[place] = $db->fetch($res[place])) {
                                             <td width="50%">
                                             <?php
                                             
+//                                            echo $data[map]." ++";
                                             if($data[map] != ''){
 												
 												

@@ -309,7 +309,6 @@ $query = "SELECT car_price  FROM   transfer_report_all  where drivername='".$dri
 $result = mysql_query($query) or die(mysql_error());
 // Print out result
 $pay_all = 0 ;
-
 while($row = mysql_fetch_array($result)){
 
 $pay_all += $row['car_price'];
@@ -437,7 +436,7 @@ if($rows[project]){
 	$rows[project] = 0;
 }
 
-// echo "SELECT $select_order FROM ".TB_transfer_report_all."  where drivername='".$driver_id."'  $find_date and status = 'CONFIRM'  and airout_time <>'' group by invoice order by  outdate,airout_time  ASC limit $row_all ";
+ 
 ?>
  
 

@@ -42,11 +42,9 @@ $('#tab_to_<?=$arr[project][id];?>').addClass("tab_alert");
  
     <script>
  
-//var income=document.getElementById('main_deposit_total_<?=$arr[project][id]?>').value;
-var income= $('#main_deposit_total_<?=$arr[project][id]?>').val();
+var income=document.getElementById('main_deposit_total_<?=$arr[project][id]?>').value;
 
-//var income_status=document.getElementById('main_deposit_status_<?=$arr[project][id]?>').value;
-var income_status=$('#main_deposit_status_<?=$arr[project][id]?>').val();
+var income_status=document.getElementById('main_deposit_status_<?=$arr[project][id]?>').value;
 
  
  
