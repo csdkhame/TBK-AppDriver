@@ -75,6 +75,7 @@ body {
     <script src="voice/js/jquery.js"></script>
 		<script src="voice/js/app.js"></script>
 <script src="js/jquery-main.js"></script> 
+<script src="js/talk.js"></script>
 <?  include "load/loading/page_main.php" ; ?>
  
 <div style="width:100%; top:0; bottom:0; position:absolute; background-color:#F6F6F6;" id="myelement">
