@@ -16,8 +16,15 @@
  <? //=$_GET[checkin]?>       
 <?
  
- for($i=1;$i<3;$i++){ ?>
- <div class="div-all-photo">
+ for($i=1;$i<3;$i++){ 
+  
+ if($i==2){
+	$hiddem_photo_box = "display:none;";
+ }else{
+ 	$hiddem_photo_box = "";
+ }
+ ?>
+ <div class="div-all-photo" style="<?=$hiddem_photo_box;?>">
         
  <table width="100%" border="0" cellspacing="2" cellpadding="2" >
   <tbody>

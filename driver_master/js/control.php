@@ -40,7 +40,8 @@ document.getElementById('loginpassword').focus() ;
 }
  
  $.post('signin_check.php',$('#login_form').serialize(),function(response){
-   $('#sendlogin').html(response);
+ 	console.log(response); 
+ 	$('#sendlogin').html(response);
   });
  });
  </script>

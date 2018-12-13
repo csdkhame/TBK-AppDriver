@@ -189,6 +189,7 @@ $('#checkstep_2_<?=$arr[project][id];?>').addClass("checkinstep_active");
    <div id="mappickup_<?=$arr[project][id];?>"></div>
         
         <div id="data_pickup_<?=$arr[project][id];?>" ></div>
+        
     </div> 
     
     
@@ -533,8 +534,6 @@ var url_mapto<?=$arr[project][id];?> = "load_small.php?name=load/show/map&file=v
 <? 
 if($arr[project][driver_pickup] > 0){ ?>
     <script >
- 
-  
   	var url_mappickup<?=$arr[project][id];?> = "load_small.php?name=load/show/map&file=view&sv=<?=$_GET[sv];?>&bookid=<?=$arr[project][id];?>&type=driver_pickup&data_val=<?=$arr[project][driver_topoint];?>";
 		
 setTimeout(function () {

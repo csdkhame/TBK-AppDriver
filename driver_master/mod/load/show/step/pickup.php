@@ -168,7 +168,7 @@ $('#load_data_checkin_popup').html(load_main_mod);
 ///$('#load_data_checkin_popup').load('load/loading/page_main.php'); 
  //$('#load_data_checkin_popup').load(url_chat_<? echo $arr[project][id];?>); 
  
- 
+ console.log(url_chat_<? echo $arr[project][id];?>);
 $.post(url_chat_<? echo $arr[project][id];?>,$('#form_popup_send_data').serialize(),
 
 function(response){ $('#load_data_checkin_popup').html(response); });
@@ -219,6 +219,7 @@ url_chat_<? echo $arr[project][id];?>=url_chat_<? echo $arr[project][id];?>+"&ln
  
  
     $('#load_data_checkin_popup').load('load/loading/page_main.php'); 
+    
  $('#load_data_checkin_popup').load(url_chat_<? echo $arr[project][id];?>); 
  
  

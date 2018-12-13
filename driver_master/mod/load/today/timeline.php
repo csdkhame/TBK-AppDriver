@@ -88,7 +88,7 @@
  * ******************************** CALL REMARKKKKKKKK
  * @return
  */
- /*
+ //*
  
  function func_remark_reader($id,$server){
 
@@ -106,7 +106,7 @@ return $data;
 }
 
 
-*/
+//*/
  
  
  ?>
@@ -2331,10 +2331,10 @@ function(response){ $('#show_map_to_new_<?=$arr[project][id]?>').html(response);
     
  
 	
- // $remark =  func_remark_reader($arr[project][vc_id],$arr[project][server]);
+  $remark =  func_remark_reader($arr[project][vc_id],$arr[project][server]);
  /// $arr[project][remark];
  
- $remark=$arr[project][remark];;
+ //$remark=$arr[project][remark];;
     echo $remark;
     $chk_remark = trim($remark);
     if($chk_remark == ''){

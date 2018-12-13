@@ -34,7 +34,7 @@
                             $('input[name=load_checkin_camera]').change(function(e) {
 								
 								
-	 	
+	 							console.log(this.value);
 								
 								var pictype=document.getElementById('upload_pic_type').value;
 								var picnumber=document.getElementById('upload_pic_number').value;
@@ -107,7 +107,7 @@ setTimeout(function () {
 	var url="go.php?name=load/show/photo_upload&file=upload_pic&id=<?=$arr[project][id];?>&folder=<?=$arr[project][invoice];?>&action=upload";
 	url=url+"&type="+document.getElementById('upload_pic_type').value;
 	url=url+"&number="+document.getElementById('upload_pic_number').value;
-										
+				console.log(url);						
  	
                        xhr.open('POST', url, true);
                                         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");

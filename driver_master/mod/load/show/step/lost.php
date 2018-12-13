@@ -22,7 +22,7 @@
  
   <input type="hidden"   value="0" id="data_lost_check" name="data_lost_check">
     
-    <table width="100%" border="0" cellspacing="2" cellpadding="2"  class="div-all-lost">
+    <table width="100%" border="0" cellspacing="2" cellpadding="2"  class="div-all-lost" style="display: none;">
   <tbody>
     <tr>
       <td colspan="2"><h4> <center><b> แขกลืมสิ่งของภายในรถหรือไม่</b></center></h4></td>

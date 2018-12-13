@@ -51,7 +51,9 @@ body {
   margin: auto;
 }
 -->
-</style></head>
+</style>
+
+</head>
 <body > 
  
 

@@ -16,8 +16,15 @@
  <? //=$_GET[checkin]?>       
 <?
  
- for($i=1;$i<3;$i++){ ?>
- <div class="div-all-photo">
+ for($i=1;$i<3;$i++){ 
+ 
+ if($i==2){
+	$hiddem_photo_box = "display:none;";
+ }else{
+ 	$hiddem_photo_box = "";
+ }
+ ?>
+ <div class="div-all-photo" style="<?=$hiddem_photo_box;?>">
         
  <table width="100%" border="0" cellspacing="2" cellpadding="2" >
   <tbody>
@@ -28,7 +35,7 @@
           <input type="text" class="form-control" name="icon_camera_<?=$i?>" id="icon_camera_<?=$i?>"   style="display: none;"/>
         </span></label></td>
       <td><span class="input-group" style="margin-top:5px;">
-        <input type="text"  value="ไม่มีภาพถ่าย" class="photo-no-active" readonly  style="padding-left:5px; margin-top:-5px; padding-right:0px; width:100%; height:35px;" id="url_photo_<?=$i?>">
+        <input type="hidden"  value="ไม่มีภาพถ่าย" class="photo-no-active" readonly  style="padding-left:5px; margin-top:-5px; padding-right:0px; width:100%; height:35px;" id="url_photo_<?=$i?>">
       </span></td>
       <td width="30">        
       
@@ -49,7 +56,7 @@
  
 
 
-<img  id="image_<?=$i?>" name="image_<?=$i?>"  style="width:100%; padding:5px; margin-top:0px;border-radius:15px; display:none " />     
+<img  id="image_<?=$i?>" name="image_<?=$i?>"  style="width:100%; padding:5px; margin-top:0px;border-radius:15px; display:none; height: 200px;" />     
 
     </div>            
            
@@ -157,9 +164,6 @@ $("#btn_camera_<?=$i?>").addClass('btn-primary');
   </tbody>
 </table>
 
-
-
-
 <? if($_GET[checkin]=='finishpoint'){?>
 
 
@@ -235,10 +239,6 @@ $(".btn-modal-no").click(function(){
 </script>
 
 <? } ?>
-
-
-
-
 
 <? if($_GET[checkin]<>'finishpoint'){?>
 

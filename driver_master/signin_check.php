@@ -1,5 +1,5 @@
 <?php 
- 
+ error_reporting(0);
  @setcookie ("appdriver_remember_user", $_POST[loginusername], time() + (86400 * 30), "/"); // 86400 = 1 day
  @setcookie ("appdriver_remember_pass", $_POST[loginpassword], time() + (86400 * 30), "/"); // 86400 = 1 day
  @setcookie('appdriver_remember_time', false);
@@ -8,7 +8,7 @@
 ?>
 
 
-<?
+<?php
  @session_start();
 require_once("includes/config.in.php");
 require_once("includes/class.mysql.php");
@@ -25,6 +25,7 @@ $tb_admin_chk = "web_driver";
 
 $res[admin] = $db->select_query("SELECT * FROM ".$tb_admin_chk." WHERE password='".$_POST[loginpassword]."'  AND (username='".$username_full."' or username='".$username_short."' or phone='".$username_full."') "); 
 $rows[admin] = $db->rows($res[admin]); 
+echo json_encode($rows[admin]);
 if($rows[admin]){
 	$arr[admin] = $db->fetch($res[admin]);
  	//$driver_id = $arr[admin][id] ;	
@@ -53,13 +54,14 @@ if($arr[admin][id]){
 
 
 window.location.href = "index.php?newlogin=<?=date('Y-m-d==H:i:s');?>";
+//window.location.href = "index.php?newlogin=2018-12-13";
  
  ///alert('<?=$_SESSION['data_user_driver']?>');
   //$("#load_form").hide();
  
  
  </script>
- <?
+ <?php
 }
  
 

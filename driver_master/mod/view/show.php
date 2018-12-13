@@ -96,7 +96,7 @@ $('.show_guest_detail_all').show('');
  * @return
  */
  
- /*
+ //*
  
  function func_remark_reader($id,$server){
 
@@ -112,7 +112,7 @@ $url = "http://www.t-booking.com/json_remark.php?id=".$id."&server=".$server;
   curl_close($ch);
 return $data;
 }
-*/
+//*/
  
  ?>
 
@@ -366,8 +366,8 @@ $res[remark] = $db->select_query("SELECT  id,remark,adult,child,baby,admin_compa
 
  	<?php
     
- 	///$remark =  func_remark_reader($arr[project][vc_id],$arr[project][server]);
-  ///  echo $remark;
+ 	//$remark =  func_remark_reader($arr[project][vc_id],$arr[project][server]);
+   //echo $remark;
  
  
     ?>
@@ -913,19 +913,19 @@ function(response){ $('#show_map_to_show_<?=$arr[project][id]?>').html(response)
  <?php
 										
  
-    /*
+    //*
  	$remark =  func_remark_reader($arr[project][vc_id],$arr[project][server]);
     echo $remark;
     $chk_remark = trim($remark);
-    if($chk_remark == ''){
+    if($chk_remark != ''){
 			?>
 			<script>
-				document.getElementById("tr_remark_<?=$arr[project][vc_id];?>").style.display="none";
+				$('#tr_remark_<?=$arr[project][vc_id];?>').show();
 			</script>
 			<?php
 		}
 		
-		 */
+		 //*/
     ?>
     
     
