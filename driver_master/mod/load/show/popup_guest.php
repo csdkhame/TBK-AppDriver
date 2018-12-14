@@ -1,7 +1,7 @@
 <script src="js/hide-address-bar.js?v=<?=time()?>"></script>
 <?
    $db->connectdb(DB_NAME_DATA,DB_USERNAME,DB_PASSWORD); 
-   $res[project] = $db->select_query("SELECT id,report_id,server,invoice,guest_name,guest_phone,outdate,transfer_date,product_area,to_place FROM ".TB_transfer_report_all."  where id='".$_GET[id]."'");
+   $res[project] = $db->select_query("SELECT id,report_id,server,invoice,guest_name,guest_phone,outdate,transfer_date,product_area,to_place,name_to_place FROM ".TB_transfer_report_all."  where id='".$_GET[id]."'");
    $arr[project] = $db->fetch($res[project]);
    if($arr[web_driver][company]==1133){
    $daywork=$arr[project][outdate];	
@@ -323,28 +323,36 @@
                               </tr>
                               <tr>
                                  <td class="gay5">
-                                    <div class="topictransfer">ชื่อแขก</div>
+                                    <div class="topictransfer" style="font-size:18px;">ชื่อแขก</div>
                                  </td>
                               </tr>
                               <tr>
-                                 <td class="gay5"><? echo $arr[project][guest_name];?></td>
+                                 <td class="gay5" style="font-size:18px;"><? echo $arr[project][guest_name];?></td>
                               </tr>
                               <tr>
                                  <td class="gay5">
-                                    <div class="topictransfer">เบอร์โทรศัพท์แขก</div>
+                                    <div class="topictransfer" style="font-size:18px;">เบอร์โทรศัพท์แขก</div>
                                  </td>
                               </tr>
                               <tr>
-                                 <td class="gay5"><? echo $arr[project][guest_phone];?></td>
+                                 <td class="gay5" style="font-size:18px;"><? echo $arr[project][guest_phone];?></td>
                               </tr>
                               <tr>
                                  <td class="gay5">
-                                    <div class="topictransfer">วอเชอร์</div>
+                                    <div class="topictransfer" style="font-size:18px;">วอเชอร์</div>
                                  </td>
                               </tr>
                               <tr>
-                                 <td class="gay5"><? echo $arr[project][invoice];?></td>
-                              </tr>                             
+                                 <td class="gay5" style="font-size:18px;"><? echo $arr[project][invoice];?></td>
+                              </tr>           
+                                <tr>
+                                 <td class="gay5">
+                                    <div class="topictransfer" style="font-size:18px;">สถานที่ส่ง</div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="gay5" style="font-size:18px;"><? echo $arr[project][name_to_place];?></td>
+                              </tr>                   
                            </table>
                         </div>
                      </div>
